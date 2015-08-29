@@ -6,28 +6,46 @@ usage: SpaceApps -[map] meteorite\nSpaceApps -list {date}
     -cOT: Cloud Optical Thickness
     -cPR: Cloud Particle Radius
     -cWC: Cloud Water Content
-    -fC: False Color (MODIS)
-    -nD: 
-    -oZ: 
-    -rF: 
-    -tCM: 
-    -tCV: 
-    -wV: 
-    -aB: 
-    -aLD: 
-    -aST: 
-    -gTA: 
-    -lAD: 
-    -lan: 
-    -lTD: 
-    -lTN: 
-    -nR: 
-    -oLR: 
-    -rSR: 
-    -sTA: 
-    -sTW: 
-    -sTO: 
-    -sAA: 
-    -sL: 
-    -uVI: 
-    -aF: 
+    -fCM: False Color (MODIS)
+    -nD: Nitrogen Dioxide
+    -oZ: Ozone
+    -rF: Rainfall
+    -tCM: True Color (MODIS)
+    -tCV: True Color (VIIRS)
+    -wV: Water Vapor
+    -aB: Albedo
+    -aLD: Average Land Surface Temperature [Day]
+    -aLT: Average Land Surface Temperature [Night]
+    -aST: Average Sea Surface Temperature 1985-1997 (AVHRR)
+    -gTA: Global Temperature Anomaly
+    -lAD: Land Surface Temperature Anomaly [Day]
+    -lan: Land Surface Temperature Anomaly [Night]
+    -lTD: Land Surface Temperature [Day]
+    -lTN: Land Surface Temperature [Night]
+    -nR: Net Radiation
+    -oLR: Outgoing Longwave Radiation
+    -rSR: Reflected Shortwave Radiation
+    -sTA: Sea Surface Temperature 1981-2006 (AVHRR)
+    -sTW: Sea Surface Temperature 1998+ (MWOI)
+    -sTO: Sea Surface Temperature 2002+ (MODIS)
+    -sAA: Sea Surface Temperature Anomaly 2002-2011 (AMSR-E)
+    -sL: Solar Insolation
+    -uVI: UV Index
+    -aF: Active Fires
+    -bMG: Blue Marble: Next Generation
+    -gAE: Greenland / Antarctica Elevation
+    -lCC: Land Cover Classification
+    -lAI: Leaf Area Index
+    -nPP: Net Primary Productivity
+    -pF: Permafrost
+    -sNH: Sea Ice and Snow Extent, Northern Hemisphere
+    -sEG: Sea Ice Concentration and Snow Extent, Global
+    -sC: Snow Cover
+    -sWE: Snow Water Equivalent
+    -Tg: Topography
+    -vI: Vegetation Index [NDVI] 2000+ (MODIS)
+    -wEA: Water Equivalent Anomaly
+    -cC: Chlorophyll Concentration
+    -pP: Population
+    -bA: Bathymetry
+    -sSS: Sea Surface Salinity 2011-2015
