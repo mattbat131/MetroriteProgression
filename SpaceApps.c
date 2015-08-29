@@ -26,6 +26,8 @@ int main (int argc, char *argv[])
     {
         if (strcmp(argv[1], "-list") == 0)
             listMet();
+	else if (strcmp(argv[1], "-h") == 0)
+            printHelp();
         else if (argv[1][0] == '-')
         {
 	    if (metExists(&argv[2]))
@@ -40,7 +42,16 @@ int main (int argc, char *argv[])
 
 void printHelp() 
 {
-
+    char c;
+    FILE *file;
+    file = fopen("help.txt", "r");
+    if (file)
+    {
+        while ((c  = getc(file)) != EOF)
+            putchar(c);
+        fclose(file);
+    }
+    printf("\n");
 }
 
 void listMet()
