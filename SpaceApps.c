@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 struct Meteorite 
@@ -17,10 +18,9 @@ int metExists(char * name[]);
 
 int main (int argc, char *argv[])
 {
-    printf("%d",argc);
     struct Meteorite met;
     
-    if (argc == 0)		
+    if (argc <= 1)		
         printHelp();
     else 
     {
@@ -41,13 +41,13 @@ int main (int argc, char *argv[])
 void printHelp() 
 {
     printf("usage: SpaceApps -[map] meteorite\nSpaceApps -list {date}\n");
-    printf("-aOT: Aerosol Optical Thickness\n");
+    printf("-AOT: Aerosol Optical Thickness\n");
    
 }
 
 void listMet()
 {
-    printf("list");
+    printf("list\n");
 }
 
 void getMet(char * args[], struct Meteorite *met)
