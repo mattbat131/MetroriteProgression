@@ -14,12 +14,12 @@ void listMet();
 void getMet(char * args[], struct Meteorite *met);
 int metExists(char * name[]);
 
-typedef struct Meteorite meteorite;
 
 int main (int argc, char *argv[])
 {
-    meteorite met;
     printf("%d",argc);
+    struct Meteorite met;
+    
     if (argc == 0)		
         printHelp();
     else 
@@ -43,4 +43,19 @@ void printHelp()
     printf("usage: SpaceApps -[map] meteorite\nSpaceApps -list {date}\n");
     printf("-aOT: Aerosol Optical Thickness\n");
    
+}
+
+void listMet()
+{
+    printf("list");
+}
+
+void getMet(char * args[], struct Meteorite *met)
+{
+   printf("Hi");
+}
+
+int metExists(char * name[])
+{
+    return 0;
 }
