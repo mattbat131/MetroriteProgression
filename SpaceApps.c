@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <Python.h>
+#include <wchar.h>
 
 struct Meteorite 
 {
@@ -56,7 +58,20 @@ void printHelp()
 
 void listMet()
 {
-    printf("list\n");
+    FILE* file;
+    int py_argc;
+    wchar_t * py_argv[2];
+
+    py_argc = 2;
+    py_argv[0] = L"meteorite.py";
+    py_argv[1] = L"list";
+
+    Py_SetProgramName(py_argv[0]);
+    Py_Initialize();
+    Py_Main(py_argc, py_argv);
+    file = fopen("meteorite.py", "r");
+    PyRun_SimpleFile(file, "meteorite.py");
+    Py_Finalize();
 }
 
 void getMet(char * args[], struct Meteorite *met)
