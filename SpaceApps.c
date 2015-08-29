@@ -1,31 +1,46 @@
 #include <stdio.h>
 #include <string.h>
 
-void printHelp();
-void listMet();
-void checkArgs(char * args[], struct Meteorite);
-
 struct Meteorite 
 {
     char name[50];
     float geoX;
     float geoY;
-    int mapId;	
-} meteorite;
+    const char *map[75];	
+};
 
+void printHelp();
+void listMet();
+void getMet(char * args[], struct Meteorite *met);
+int metExists(char * name[]);
 
-int main (int argc, char * argv[])
+typedef struct Meteorite meteorite;
+
+int main (int argc, char *argv[])
 {
-    struct Meteorite meteorite;
-    if (argc < 2)		
+    meteorite met;
+    printf("%d",argc);
+    if (argc == 0)		
         printHelp();
     else 
     {
-        if (strcmpr(argv[1], "-list") == 0)
+        if (strcmp(argv[1], "-list") == 0)
             listMet();
-        else if (argv[1].charAt(0) == '-')
+        else if (argv[1][0] == '-')
         {
-	    checkArgs(argv[1], meteorite);
+	    if (metExists(&argv[2]))
+	        getMet(&argv[1], &met);
+            else
+                printf("Meteorite does not exist.\nUse SpaceApps -list {date} to check meteorites at the time.");
         }
     }
+    return 0;
+}
+
+
+void printHelp() 
+{
+    printf("usage: SpaceApps -[map] meteorite\nSpaceApps -list {date}\n");
+    printf("-aOT: Aerosol Optical Thickness\n");
+   
 }
