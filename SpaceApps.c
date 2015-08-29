@@ -40,9 +40,7 @@ int main (int argc, char *argv[])
 
 void printHelp() 
 {
-    printf("usage: SpaceApps -[map] meteorite\nSpaceApps -list {date}\n");
-    printf("-AOT: Aerosol Optical Thickness\n");
-   
+
 }
 
 void listMet()

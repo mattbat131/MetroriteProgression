@@ -1,0 +1,33 @@
+usage: SpaceApps -[map] meteorite\nSpaceApps -list {date}
+    -aOT: Aerosol Optical Thickness
+    -aPR: Aerosol Particle Radius
+    -cM: Carbon Monoxide
+    -cF: Cloud Fraction
+    -cOT: Cloud Optical Thickness
+    -cPR: Cloud Particle Radius
+    -cWC: Cloud Water Content
+    -fC: False Color (MODIS)
+    -nD: 
+    -oZ: 
+    -rF: 
+    -tCM: 
+    -tCV: 
+    -wV: 
+    -aB: 
+    -aLD: 
+    -aST: 
+    -gTA: 
+    -lAD: 
+    -lan: 
+    -lTD: 
+    -lTN: 
+    -nR: 
+    -oLR: 
+    -rSR: 
+    -sTA: 
+    -sTW: 
+    -sTO: 
+    -sAA: 
+    -sL: 
+    -uVI: 
+    -aF: 
