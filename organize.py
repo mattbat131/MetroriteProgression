@@ -24,7 +24,18 @@ def main():
         files = ftp.nlst() 
         maps[index] = find(files)
     print(maps)
+    
+    file = open("meteoritedata.txt" "w")
+    file.writelines(x);
+    file.writelines("\n")
+    file.writelines(y)
+    file.writelines("\n")
+    file.writelines(date)
+    file.writelines("\n")
 
+    for index in range(len(maps)):
+        file.writelines(maps[index])
+        file.writeline("\n")
 
 if __name__ == "__main__":
     main()
