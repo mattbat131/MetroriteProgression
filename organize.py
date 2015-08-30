@@ -26,7 +26,7 @@ def main():
         files = ftp.nlst('/rgb/{0}'.format(sys.argv[index+1]))
         maps.append(find(files, sys.argv[index+1], date))
     
-    file = open("meteoritedata.txt" "w")
+    file = open("meteoritedata.txt", "w")
     file.writelines(name)
     file.writelines("\n")
     file.writelines(x);

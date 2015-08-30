@@ -5,10 +5,10 @@
 struct Meteorite 
 {
     const char * name;
-    float geoX;
-    float geoY;
-    int date;
-    const char *map[50];	
+    char geoX;
+    char geoY;
+    char date;
+    const char * map[50];	
 };
 
 void printHelp();
@@ -91,10 +91,10 @@ void getMet(char * args[], int argc, char name[])
            met.map[index] = "";
            
        if(strcmp(map,  "-cF") == 0)
-           met.map[index] = "MODAL2_M_CLD ”;
+           met.map[index] = "MODAL2_M_CLD ";
            
        if(strcmp(map,  "-cOT") == 0)
-           met.map[index] = “AURA_OZONE”;
+           met.map[index] = "AURA_OZONE";
            
        if(strcmp(map,  "-cPR") == 0)
            met.map[index] = "";
@@ -103,7 +103,7 @@ void getMet(char * args[], int argc, char name[])
            met.map[index] = "";
            
        if(strcmp(map,  "-fCM") == 0)
-           met.map[index] = “FIRE”;
+           met.map[index] = "FIRE";
            
        if(strcmp(map,  "-nD") == 0)
            met.map[index] = "AURA_NO2";
@@ -121,34 +121,34 @@ void getMet(char * args[], int argc, char name[])
            met.map[index] = "VIIRS";
            
        if(strcmp(map,  "-wV") == 0)
-           met.map[index] = “MY1”;
+           met.map[index] = "MY1";
            
        if(strcmp(map,  "-aB") == 0)
-           met.map[index] = “MWOI_SST”;
+           met.map[index] = "MWOI_SST";
            
        if(strcmp(map,  "-aLD") == 0)
-           met.map[index] = “MYD28W”;
+           met.map[index] = "MYD28W";
            
        if(strcmp(map,  "-aLT") == 0)
-           met.map[index] = “LSTNI”;
+           met.map[index] = "LSTNI";
            
        if(strcmp(map,  "-aST") == 0)
-           met.map[index] = “MOD_LSTD”;
+           met.map[index] = "MOD_LSTD";
            
        if(strcmp(map,  "-gTA") == 0)
-           met.map[index] = “MY1DMM_CHLORA”;
+           met.map[index] = "MY1DMM_CHLORA";
            
        if(strcmp(map,  "-lAD") == 0)
            met.map[index] = "MOD_LSTAD";
            
        if(strcmp(map,  "-lAN") == 0)
-           met.map[index] = "MOD_LSTAN”;
+           met.map[index] = "MOD_LSTAN";
            
        if(strcmp(map,  "-lTD") == 0)
-           met.map[index] = “MOD_LSTD”;
+           met.map[index] = "MOD_LSTD";
            
        if(strcmp(map,  "-lTN") == 0)
-           met.map[index] = “MOD_LSTN”;
+           met.map[index] = "MOD_LSTN";
            
        if(strcmp(map,  "-nR") == 0)
            met.map[index] = "CERES_NETFLUX";
@@ -175,7 +175,7 @@ void getMet(char * args[], int argc, char name[])
            met.map[index] = "CERES_INSOL";
            
        if(strcmp(map,  "-uVI") == 0)
-           met.map[index] = “NDVI”;
+           met.map[index] = "NDVI";
            
        if(strcmp(map,  "-aF") == 0)
            met.map[index] = "";
@@ -240,7 +240,8 @@ void getMet(char * args[], int argc, char name[])
    char *temp;   
 
    met.name = name;
-   fscanf(file, "%s %d %f %f", ignore, &met.date, &met.geoX, &met.geoY);
+   printf("%s\n",met.map[0]);
+   fscanf(file, "%s %s %s %s", ignore, &met.date, &met.geoX, &met.geoY);
 }
 
 int metExists(char name[])
@@ -268,9 +269,9 @@ int metExists(char name[])
 void pyMet(int argc) 
 {
     const char * command = "python3.4 organize.py ";
-    const char * date = (char *) &met.date;
-    const char * geoX = (char *) &met.geoX;
-    const char * geoY = (char *) &met.geoY;
+    const char * date = &met.date;
+    const char * geoX = &met.geoX;
+    const char * geoY = &met.geoY;
     int i = 0;    
 
     char * pyCommand;
@@ -288,5 +289,6 @@ void pyMet(int argc)
     strcat(pyCommand, geoY);
     strcat(pyCommand, " ");
     strcat(pyCommand, met.name);
+    
     system(pyCommand);
 }
