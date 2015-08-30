@@ -274,7 +274,7 @@ void pyMet(int argc)
     int i = 0;    
 
     char * pyCommand;
-    pyCommand = malloc(strlen(command) + strlen(date) + strlen(geoX) + strlen(geoY) + sizeof(met.map) + 10);
+    pyCommand = malloc(strlen(command) + strlen(met.name) + strlen(date) + strlen(geoX) + strlen(geoY) + sizeof(met.map) + 10);
     strcat(pyCommand, command);
     for (i = 0; i < argc - 1; i++)
     {
@@ -287,5 +287,6 @@ void pyMet(int argc)
     strcat(pyCommand, " ");
     strcat(pyCommand, geoY);
     strcat(pyCommand, " ");
+    strcat(pyCommand, met.name);
     system(pyCommand);
 }
