@@ -91,10 +91,10 @@ void getMet(char * args[], int argc, char name[])
            met.map[index] = "";
            
        if(strcmp(map,  "-cF") == 0)
-           met.map[index] = "";
+           met.map[index] = "MODAL2_M_CLD ”;
            
        if(strcmp(map,  "-cOT") == 0)
-           met.map[index] = "";
+           met.map[index] = “AURA_OZONE”;
            
        if(strcmp(map,  "-cPR") == 0)
            met.map[index] = "";
@@ -103,7 +103,7 @@ void getMet(char * args[], int argc, char name[])
            met.map[index] = "";
            
        if(strcmp(map,  "-fCM") == 0)
-           met.map[index] = "";
+           met.map[index] = “FIRE”;
            
        if(strcmp(map,  "-nD") == 0)
            met.map[index] = "AURA_NO2";
@@ -121,34 +121,34 @@ void getMet(char * args[], int argc, char name[])
            met.map[index] = "VIIRS";
            
        if(strcmp(map,  "-wV") == 0)
-           met.map[index] = "";
+           met.map[index] = “MY1”;
            
        if(strcmp(map,  "-aB") == 0)
-           met.map[index] = "";
+           met.map[index] = “MWOI_SST”;
            
        if(strcmp(map,  "-aLD") == 0)
-           met.map[index] = "";
+           met.map[index] = “MYD28W”;
            
        if(strcmp(map,  "-aLT") == 0)
-           met.map[index] = "";
+           met.map[index] = “LSTNI”;
            
        if(strcmp(map,  "-aST") == 0)
-           met.map[index] = "";
+           met.map[index] = “MOD_LSTD”;
            
        if(strcmp(map,  "-gTA") == 0)
-           met.map[index] = "";
+           met.map[index] = “MY1DMM_CHLORA”;
            
        if(strcmp(map,  "-lAD") == 0)
-           met.map[index] = "";
+           met.map[index] = "MOD_LSTAD";
            
        if(strcmp(map,  "-lAN") == 0)
-           met.map[index] = "";
+           met.map[index] = "MOD_LSTAN”;
            
        if(strcmp(map,  "-lTD") == 0)
-           met.map[index] = "";
+           met.map[index] = “MOD_LSTD”;
            
        if(strcmp(map,  "-lTN") == 0)
-           met.map[index] = "";
+           met.map[index] = “MOD_LSTN”;
            
        if(strcmp(map,  "-nR") == 0)
            met.map[index] = "CERES_NETFLUX";
@@ -160,7 +160,7 @@ void getMet(char * args[], int argc, char name[])
            met.map[index] = "CERES_SWFLUX";
            
        if(strcmp(map,  "-sTA") == 0)
-           met.map[index] = "";
+           met.map[index] = "MYD28D";
            
        if(strcmp(map,  "-sTW") == 0)
            met.map[index] = "";
@@ -175,16 +175,16 @@ void getMet(char * args[], int argc, char name[])
            met.map[index] = "CERES_INSOL";
            
        if(strcmp(map,  "-uVI") == 0)
-           met.map[index] = "";
+           met.map[index] = “NDVI”;
            
        if(strcmp(map,  "-aF") == 0)
            met.map[index] = "";
            
        if(strcmp(map,  "-bMG") == 0)
-           met.map[index] = "";
+           met.map[index] = "BlueMarbleNG";
            
        if(strcmp(map,  "-lCC") == 0)
-           met.map[index] = "";
+           met.map[index] = "ICESAT_ELEV_G";
            
        if(strcmp(map,  "-lAI") == 0)
            met.map[index] = "";
