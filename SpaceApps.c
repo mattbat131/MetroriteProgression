@@ -1,14 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <Python.h>
-#include <wchar.h>
 
 struct Meteorite 
 {
     char name[50];
     float geoX;
     float geoY;
+    int date;
     const char *map[75];	
 };
 
@@ -58,28 +57,17 @@ void printHelp()
 
 void listMet()
 {
-    FILE* file;
-    int py_argc;
-    wchar_t * py_argv[2];
-
-    py_argc = 2;
-    py_argv[0] = L"meteorite.py";
-    py_argv[1] = L"list";
-
-    Py_SetProgramName(py_argv[0]);
-    Py_Initialize();
-    Py_Main(py_argc, py_argv);
-    file = fopen("meteorite.py", "r");
-    PyRun_SimpleFile(file, "meteorite.py");
-    Py_Finalize();
+    system("python3.4 meteorite.py list");
 }
 
 void getMet(char * args[], struct Meteorite *met)
 {
-   printf("Hi");
+   
 }
 
 int metExists(char * name[])
 {
-    return 0;
+    char * command[] = "python3.4 meteorite.py exists" + name;
+    system(command);
+    
 }
