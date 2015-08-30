@@ -5,29 +5,36 @@ import sys
 
 
 def getList(file):
-    print([file[index]["name"] for index in range(len(file))])
-    #beautify
+    print("Name,\trecclass,\tmass(g),\tyear,\treclat,\treclong")
+    for index in range(len(file)):
+        try:
+            print("{0},\t{1},\t{2},\t{3},\t{4},\t{5}".format(file[index]["name"], file[index]["recclass"], file[index]["mass"], file[index]["year"], file[index]["reclat"], file[index]["reclong"])) 
+        except: 
+            print("{0}".format(file[index]["name"]))
+
 
 def getIndex(name, file): 
     for index in range(len(file)):
         if (file[index]["name"] == name):
-            return index
+           return index
+    return -1
 
 #gets meteorite date: returns int
 def getDate(name, file):
     year = file[getIndex(name, file)]["year"]
-    return year
-
+    return year[:4]
 
 #gets meteorite location: returns int array
 def getLocation(name, file):
-    location = file[getIndex(name, file)]["location"]
-    return location
+    location = file[getIndex(name, file)]["geolocation"]
+    geoLoc = "{0}, {1}".format(location["latitude"], location["longitude"])
+    return geoLoc
 
 def exists(name, file):
-    if (getIndex(name, file) == NULL):
-        return 0;
-    else return 1; 
+    if (getIndex(name, file) == -1):
+        return 0
+    else:
+        return 1 
 
 def getJsonFromUrl(url):
     curl_result = curl(url)
@@ -48,17 +55,25 @@ def curl(url):
 #does the main shit
 def main():
     json_file = getJsonFromUrl("https://data.nasa.gov/resource/gh4g-9sfh.json")
-    if (sys.argv[1] == "list"):
+    df=open("datafile.txt",'w')
+    if (len(sys.argv) < 2):
+        print("To few args")
+    elif (sys.argv[1] == "list"):
         getList(json_file)
-    elif (sys.argv[1] == "year"):
-        getDate(sys.argv[2], json_file)
-	#write to data file
-    elif (sys.argv[1] == "location"):
-        getLocation(sys.argv[2], json_file)
-        #write to data file
-    elif (sys.argv[1] == “exists”):
-        exists(sys.argv[2], json_file)
+    elif (sys.argv[1] == "flush"):
+        df.flush()
+    else:
+        if (exists(sys.argv[1], json_file)):
+            df.writelines("1")
+            df.writelines("\n")
+            df.writelines(getDate(sys.argv[1], json_file))
+            df.writelines("\n")
+            df.writelines(getLocation(sys.argv[1], json_file)) 
+        else:
+            df.writelines("0")
+            print("Meteor doesn't exist")
         #write to exist file
+    df.close()
 
 if __name__ == "__main__":
     main()
