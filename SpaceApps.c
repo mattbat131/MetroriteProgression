@@ -80,34 +80,34 @@ void getMet(char * args[], int argc, char name[])
        map = args[index];
        
        if(strcmp(map, "-aOT") == 0)
-           met.map[index] = "";
+           met.map[index] = “”;
            
        if(strcmp(map, "-aPR") == 0)
-           met.map[index] = "";
+           met.map[index] = “”;
            
        if(strcmp(map,  "-cM") == 0)
-           met.map[index] = "";
+           met.map[index] = “”;
            
        if(strcmp(map,  "-cF") == 0)
-           met.map[index] = "";
+           met.map[index] = “”;
            
        if(strcmp(map,  "-cOT") == 0)
-           met.map[index] = "";
+           met.map[index] = “”;
            
        if(strcmp(map,  "-cPR") == 0)
-           met.map[index] = "";
+           met.map[index] = “”;
            
        if(strcmp(map,  "-cWC") == 0)
-           met.map[index] = "";
+           met.map[index] = “”;
            
        if(strcmp(map,  "-fCM") == 0)
-           met.map[index] = "";
+           met.map[index] = “”;
            
        if(strcmp(map,  "-nD") == 0)
-           met.map[index] = "";
+           met.map[index] = "AURA_NO2";
            
        if(strcmp(map,  "-oZ") == 0)
-           met.map[index] = "";
+           met.map[index] = "AURA_OZONE";
            
        if(strcmp(map,  "-rF") == 0)
            met.map[index] = "";
@@ -116,7 +116,7 @@ void getMet(char * args[], int argc, char name[])
            met.map[index] = "";
            
        if(strcmp(map,  "-tCV") == 0)
-           met.map[index] = "";
+           met.map[index] = “VIIRS”;
            
        if(strcmp(map,  "-wV") == 0)
            met.map[index] = "";
@@ -149,13 +149,13 @@ void getMet(char * args[], int argc, char name[])
            met.map[index] = "";
            
        if(strcmp(map,  "-nR") == 0)
-           met.map[index] = "";
+           met.map[index] = “CERES_NETFLUX”;
            
        if(strcmp(map,  "-oLR") == 0)
-           met.map[index] = "";
+           met.map[index] = "CERES_LWFLUX";
            
        if(strcmp(map,  "-rSR") == 0)
-           met.map[index] = "";
+           met.map[index] = “CERES_SWFLUX”;
            
        if(strcmp(map,  "-sTA") == 0)
            met.map[index] = "";
@@ -167,10 +167,10 @@ void getMet(char * args[], int argc, char name[])
            met.map[index] = "";
            
        if(strcmp(map,  "-sAA") == 0)
-           met.map[index] = "";
+           met.map[index] = “AMSRE_SSTAn”;
            
        if(strcmp(map,  "-sL") == 0)
-           met.map[index] = "";
+           met.map[index] = "CERES_INSOL";
            
        if(strcmp(map,  "-uVI") == 0)
            met.map[index] = "";
@@ -200,10 +200,10 @@ void getMet(char * args[], int argc, char name[])
            met.map[index] = "";
            
        if(strcmp(map,  "-sC") == 0)
-           met.map[index] = "";
+           met.map[index] = “SCSIE”;
            
        if(strcmp(map,  "-sWE") == 0)
-           met.map[index] = "";
+           met.map[index] = “SWE”;
            
        if(strcmp(map,  "-tG") == 0)
            met.map[index] = "";
@@ -218,13 +218,13 @@ void getMet(char * args[], int argc, char name[])
            met.map[index] = "";
            
        if(strcmp(map,  "-pP") == 0)
-           met.map[index] = "";
+           met.map[index] = "PermafrostNSIDC";
            
        if(strcmp(map,  "-bA") == 0)
-           met.map[index] = "";
+           met.map[index] = "GEBCO_BATHY";
            
        if(strcmp(map,  "-sSS") == 0)
-           met.map[index] = "";
+           met.map[index] = "AQUARIUS_SSS";
            
        if(map == NULL)
            printHelp();
