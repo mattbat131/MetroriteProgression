@@ -4,7 +4,7 @@
 
 struct Meteorite 
 {
-    char name[50];
+    const char * name;
     float geoX;
     float geoY;
     int date;
@@ -13,14 +13,13 @@ struct Meteorite
 
 void printHelp();
 void listMet();
-void getMet(char * args[], struct Meteorite *met);
-int metExists(char * name[]);
+void getMet(char args[], char name[]);
+int metExists(char name[]);
 
+struct Meteorite met;
 
 int main (int argc, char *argv[])
-{
-    struct Meteorite met;
-    
+{   
     if (argc <= 1)		
         printHelp();
     else 
@@ -31,10 +30,12 @@ int main (int argc, char *argv[])
             printHelp();
         else if (argv[1][0] == '-')
         {
-	    if (metExists(&argv[2]))
-	        getMet(&argv[1], &met);
+            if (argc < 3) 
+                printf("Missing meteorite name.\nUse SpaceApps -list to check meteorites.\n");
+	    else if (metExists(argv[2]) == 1)
+	        getMet(argv[1], argv[2]);
             else
-                printf("Meteorite does not exist.\nUse SpaceApps -list {date} to check meteorites at the time.");
+                printf("Meteorite does not exist.\nUse SpaceApps -list to check meteorites.\n");
         }
     }
     return 0;
@@ -60,14 +61,37 @@ void listMet()
     system("python3.4 meteorite.py list");
 }
 
-void getMet(char * args[], struct Meteorite *met)
+void getMet(char args[], char name[])
 {
-   
+   FILE *file;
+   file = fopen("datafile.txt", "r");
+
+   char ignore[1024];  
+
+   char *temp;   
+
+   met.name = name;
+   fscanf(file, "%s %d %f %f", ignore, &met.date, &met.geoX, &met.geoY);
 }
 
-int metExists(char * name[])
+int metExists(char name[])
 {
-    char * command[] = "python3.4 meteorite.py exists" + name;
-    system(command);
+    const char* command = "python3.4 meteorite.py ";
+    const char* n = name;
+
+    char* pyCommand;
+    pyCommand = malloc(strlen(command)+strlen(n)+2);
+    strcpy(pyCommand, command);
+    strcat(pyCommand, n);
+    system(pyCommand);
+    int * bool;
+    FILE * file = fopen("datafile.txt", "r");
+    if (fscanf(file, "%d", bool) == 1) 
+    {
+        fclose(file);
+        return 1;
+    }
+    fclose(file);
+    return 0; 
     
 }

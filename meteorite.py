@@ -27,7 +27,7 @@ def getDate(name, file):
 #gets meteorite location: returns int array
 def getLocation(name, file):
     location = file[getIndex(name, file)]["geolocation"]
-    geoLoc = "{0}, {1}".format(location["latitude"], location["longitude"])
+    geoLoc = "{0} {1}".format(location["latitude"], location["longitude"])
     return geoLoc
 
 def exists(name, file):
@@ -65,13 +65,12 @@ def main():
     else:
         if (exists(sys.argv[1], json_file)):
             df.writelines("1")
-            df.writelines("\n")
+            df.writelines(" ")
             df.writelines(getDate(sys.argv[1], json_file))
-            df.writelines("\n")
+            df.writelines(" ")
             df.writelines(getLocation(sys.argv[1], json_file)) 
         else:
             df.writelines("0")
-            print("Meteor doesn't exist")
         #write to exist file
     df.close()
 
