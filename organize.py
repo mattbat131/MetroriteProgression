@@ -2,12 +2,12 @@ import os, fnmatch
 import sys
 from ftplib import FTP
 
-def find(files, pattern):
+def find(files, name, date):
     matchedFiles = []
     
     for filename in files:
-         if re.match(pattern, filename):
-             matcheFiles.append(filename)
+         if name+'_'+date in filename:
+             matchedFiles.append(filename)
 
     return matchedFiles
 
@@ -18,14 +18,13 @@ def main():
     y = sys.argv[length - 2]
     x = sys.argv[length - 3]
     date = sys.argv[length - 4]
-    
-    maps = list()
+ 
+    ftp = FTP('neoftp.sci.gsfc.nasa.gov')
+    ftp.login()
+    maps = []
     for index in range(length - 5):
-        print('ftp://neoftp.sci.gsfc.nasa.gov/rgb/{0}/'.format(sys.argv[index+1]))
-        ftp = FTP('ftp://neoftp.sci.gsfc.nasa.gov/rgb/{0}/'.format(sys.argv[index+1]))
-        files = ftp.nlst() 
-        maps[index] = find(files, "{0}_{1}".format(sys.argv[index], date))
-    print(maps)
+        files = ftp.nlst('/rgb/{0}'.format(sys.argv[index+1]))
+        maps.append(find(files, sys.argv[index+1], date))
     
     file = open("meteoritedata.txt" "w")
     file.writelines(name)
