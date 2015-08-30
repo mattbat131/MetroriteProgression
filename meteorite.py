@@ -6,6 +6,7 @@ import sys
 
 def getList(file):
     print([file[index]["name"] for index in range(len(file))])
+    #beautify
 
 def getIndex(name, file): 
     for index in range(len(file)):
@@ -22,6 +23,11 @@ def getDate(name, file):
 def getLocation(name, file):
     location = file[getIndex(name, file)]["location"]
     return location
+
+def exists(name, file):
+    if (getIndex(name, file) == NULL):
+        return 0;
+    else return 1; 
 
 def getJsonFromUrl(url):
     curl_result = curl(url)
@@ -46,8 +52,13 @@ def main():
         getList(json_file)
     elif (sys.argv[1] == "year"):
         getDate(sys.argv[2], json_file)
+	#write to data file
     elif (sys.argv[1] == "location"):
         getLocation(sys.argv[2], json_file)
+        #write to data file
+    elif (sys.argv[1] == “exists”):
+        exists(sys.argv[2], json_file)
+        #write to exist file
 
 if __name__ == "__main__":
     main()
