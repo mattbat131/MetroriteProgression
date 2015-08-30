@@ -34,13 +34,14 @@ int main (int argc, char *argv[])
                 printf("Missing meteorite name.\nUse SpaceApps -list to check meteorites.\n");
 	    else if (metExists(argv[argc - 1]) == 1)
             {
-                char *maps[argc-1];
+                char ** maps = calloc(argc - 1, sizeof(char *));
                 int i = 1;
                 for (i = 1; i < argc - 1; i++)
                 {
-                    maps[argc-1] = argv[i];
-                }
-	        getMet(maps, argc - 1, argv[argc - 1]);
+                    maps[i-1] = malloc(strlen(argv[i]));
+                    memcpy(maps[i-1], argv[i], strlen(argv[i]));
+                }	        
+                getMet(maps, argc - 1, argv[argc - 1]);
             }
             else
                 printf("Meteorite does not exist.\nUse SpaceApps -list to check meteorites.\n");
@@ -73,11 +74,11 @@ void listMet()
 void getMet(char * args[], int argc, char name[])
 {
    int index = 0;
-   const char * map;
-   for (index = 0; index < argc; index++)
+   char * map;
+   for (index = 0; index < argc - 1; index++)
    {
        map = args[index];
-  
+       
        if(strcmp(map, "-aOT") == 0)
            met.map[index] = "";
            
@@ -225,7 +226,7 @@ void getMet(char * args[], int argc, char name[])
        if(strcmp(map,  "-sSS") == 0)
            met.map[index] = "";
            
-       if(met.map[index] == NULL)
+       if(map == NULL)
            printHelp();
    }
 
