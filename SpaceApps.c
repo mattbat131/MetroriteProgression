@@ -13,6 +13,7 @@ struct Meteorite
 
 void printHelp();
 void listMet();
+void pyMet(int argc);
 void getMet(char * args[], int argc, char name[]);
 int metExists(char name[]);
 
@@ -42,6 +43,7 @@ int main (int argc, char *argv[])
                     memcpy(maps[i-1], argv[i], strlen(argv[i]));
                 }	        
                 getMet(maps, argc - 1, argv[argc - 1]);
+                pyMet(argc - 1);
             }
             else
                 printf("Meteorite does not exist.\nUse SpaceApps -list to check meteorites.\n");
@@ -80,28 +82,28 @@ void getMet(char * args[], int argc, char name[])
        map = args[index];
        
        if(strcmp(map, "-aOT") == 0)
-           met.map[index] = “”;
+           met.map[index] = "";
            
        if(strcmp(map, "-aPR") == 0)
-           met.map[index] = “”;
+           met.map[index] = "";
            
        if(strcmp(map,  "-cM") == 0)
-           met.map[index] = “”;
+           met.map[index] = "";
            
        if(strcmp(map,  "-cF") == 0)
-           met.map[index] = “”;
+           met.map[index] = "";
            
        if(strcmp(map,  "-cOT") == 0)
-           met.map[index] = “”;
+           met.map[index] = "";
            
        if(strcmp(map,  "-cPR") == 0)
-           met.map[index] = “”;
+           met.map[index] = "";
            
        if(strcmp(map,  "-cWC") == 0)
-           met.map[index] = “”;
+           met.map[index] = "";
            
        if(strcmp(map,  "-fCM") == 0)
-           met.map[index] = “”;
+           met.map[index] = "";
            
        if(strcmp(map,  "-nD") == 0)
            met.map[index] = "AURA_NO2";
@@ -116,7 +118,7 @@ void getMet(char * args[], int argc, char name[])
            met.map[index] = "";
            
        if(strcmp(map,  "-tCV") == 0)
-           met.map[index] = “VIIRS”;
+           met.map[index] = "VIIRS";
            
        if(strcmp(map,  "-wV") == 0)
            met.map[index] = "";
@@ -149,13 +151,13 @@ void getMet(char * args[], int argc, char name[])
            met.map[index] = "";
            
        if(strcmp(map,  "-nR") == 0)
-           met.map[index] = “CERES_NETFLUX”;
+           met.map[index] = "CERES_NETFLUX";
            
        if(strcmp(map,  "-oLR") == 0)
            met.map[index] = "CERES_LWFLUX";
            
        if(strcmp(map,  "-rSR") == 0)
-           met.map[index] = “CERES_SWFLUX”;
+           met.map[index] = "CERES_SWFLUX";
            
        if(strcmp(map,  "-sTA") == 0)
            met.map[index] = "";
@@ -167,7 +169,7 @@ void getMet(char * args[], int argc, char name[])
            met.map[index] = "";
            
        if(strcmp(map,  "-sAA") == 0)
-           met.map[index] = “AMSRE_SSTAn”;
+           met.map[index] = "AMSRE_SSTAn";
            
        if(strcmp(map,  "-sL") == 0)
            met.map[index] = "CERES_INSOL";
@@ -200,10 +202,10 @@ void getMet(char * args[], int argc, char name[])
            met.map[index] = "";
            
        if(strcmp(map,  "-sC") == 0)
-           met.map[index] = “SCSIE”;
+           met.map[index] = "SCSIE";
            
        if(strcmp(map,  "-sWE") == 0)
-           met.map[index] = “SWE”;
+           met.map[index] = "SWE";
            
        if(strcmp(map,  "-tG") == 0)
            met.map[index] = "";
@@ -246,7 +248,7 @@ int metExists(char name[])
     const char* command = "python3.4 meteorite.py ";
     const char* n = name;
 
-    char* pyCommand;
+    char * pyCommand;
     pyCommand = malloc(strlen(command)+strlen(n)+2);
     strcpy(pyCommand, command);
     strcat(pyCommand, n);
@@ -261,4 +263,29 @@ int metExists(char name[])
     fclose(file);
     return 0; 
     
+}
+
+void pyMet(int argc) 
+{
+    const char * command = "python3.4 organize.py ";
+    const char * date = (char *) &met.date;
+    const char * geoX = (char *) &met.geoX;
+    const char * geoY = (char *) &met.geoY;
+    int i = 0;    
+
+    char * pyCommand;
+    pyCommand = malloc(strlen(command) + strlen(date) + strlen(geoX) + strlen(geoY) + sizeof(met.map) + 10);
+    strcat(pyCommand, command);
+    for (i = 0; i < argc - 1; i++)
+    {
+        strcat(pyCommand, met.map[i]);
+        strcat(pyCommand, " ");
+    }
+    strcat(pyCommand, date);
+    strcat(pyCommand, " ");
+    strcat(pyCommand, geoX);
+    strcat(pyCommand, " ");
+    strcat(pyCommand, geoY);
+    strcat(pyCommand, " ");
+    system(pyCommand);
 }
